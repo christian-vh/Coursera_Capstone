@@ -1,0 +1,46 @@
+DATA
+The data used for the project is:
+1. Name: Data of College Scoreboard
+   Date: March 30, 2020
+   https://ed-public-download.app.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv
+   Detail: 
+          This dataset contains the information of colleges, and belongs to the U.S. Department of Education.
+   Description of usage: 
+          This dataset will be used to get information about location, tuition fees, amount of undergrad students 
+          and name of universities registered in the U.S. Department of Education.
+          First, tuition fees information will be used to cluster the universities in ranges of USD 10,000.00.
+          Then, the information about the number of undergrad students will be stored to be aware of the quantity 
+          of students that walks around each university.
+          Finally, the location data will be used to ask Foursquare API about venues around each university.  
+          
+          COLUMN         |    DATATYPE        |  DESCRIPTION  
+          ----------------------------------------------------------------------------------------------------------
+          INSTNM         |     STRING         |  Institution Name   
+          CITY           |     STRING         |  City
+          LATITUDE       |     FLOAT          |  Latitude 
+          LONGITUDE      |     FLOAT          |  Longitude
+          TUITIONFEE_IN  |     INTEGER        |  In-state tuition and fees
+          UG12MN         |     INTEGER        |  Count of Undergraduate students enrolled during a 12 month period
+          
+2. Name: Foursquare API
+   https://api.foursquare.com/v2/venues/explore?&client_id={}&client_secret={}&v={}&ll={},{}&radius={}&limit={}
+   Detail: 
+          The information that return will contain 100 venues around each location.  
+   Description of usage:  
+          The information about the venues around each university will be used to cluster the universities previously
+          separated by the tuition fees.   
+          
+          COLUMN                              |    DATATYPE     |  DESCRIPTION  
+          --------------------------------------------------------------------------
+          ['venue']['name']                   |     STRING      |  Venue Name
+          ['venue']['location']['lat']        |     FLOAT       |  Venue Latitude
+          ['venue']['name']['lng']            |     FLOAT       |  Venue Longitude 
+          ['venue']['categories'][0]['name']  |     STRING      |  Venue Category
+
+IN ADDITION: 
+For more detail of each column of the College Scorecard, I have used the data dictionary from 
+the data documentation to understand the meaning of the column labels and the type of data that contains.
+
+https://collegescorecard.ed.gov/assets/CollegeScorecardDataDictionary.xlsx
+
+
